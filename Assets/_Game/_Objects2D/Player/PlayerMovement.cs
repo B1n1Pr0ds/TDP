@@ -28,10 +28,26 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        direction = Input.GetAxisRaw("Horizontal");
-        position = new Vector2(direction * speed, rb.velocity.y);
-        Move(position);    
-    
+        direction = 0;
+        
+        if (walkingRightButton)
+        {
+            direction = 1;
+            position = new Vector2(direction * speed, rb.velocity.y);
+            Move(position);
+        }
+        else if (walkingLeftButton)
+        {
+            direction = -1;
+            position = new Vector2(direction * speed, rb.velocity.y);
+            Move(position);
+        }
+        else if(!walkingLeftButton && !walkingRightButton)
+        {
+            direction = Input.GetAxisRaw("Horizontal");
+            position = new Vector2(direction * speed, rb.velocity.y);
+            Move(position);
+        }
         if (direction != 0)
         {
 
