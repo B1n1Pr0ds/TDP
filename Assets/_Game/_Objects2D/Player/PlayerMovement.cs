@@ -10,12 +10,12 @@ public class PlayerMovement : MonoBehaviour
     private Animator playerAnimator;
     private Rigidbody2D rb;
     private float direction;
-    private float buttonDirection;
     [SerializeField] private float speed = 0.1f;
     private Vector2 position;
-    private Vector2 buttonPosition;
     private bool walkingLeftButton;
     private bool walkingRightButton;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         direction = 0;
-        
+
         if (walkingRightButton)
         {
             direction = 1;
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             position = new Vector2(direction * speed, rb.velocity.y);
             Move(position);
         }
-        else if(!walkingLeftButton && !walkingRightButton)
+        else if (!walkingLeftButton && !walkingRightButton)
         {
             direction = Input.GetAxisRaw("Horizontal");
             position = new Vector2(direction * speed, rb.velocity.y);
@@ -63,15 +63,24 @@ public class PlayerMovement : MonoBehaviour
         {
             playerAnimator.SetBool("isWalking", false);
         }
+
     }
-    public void MoveRightButton()
+    public void MoveRightButtonPressed()
     {
         walkingRightButton = true;
     }
-    public void MoveLeftButton()
+    public void MoveRightButtonUnpressed()
+    {
+        walkingRightButton = false;
+    }
+    public void MoveLeftButtonPressed()
     {
         walkingLeftButton = true;
 
+    }
+    public void MoveLeftButtonUnpressed()
+    {
+        walkingLeftButton = false;
     }
 
     private void Move(Vector2 _position)
