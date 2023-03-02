@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+
 using UnityEngine;
-using UnityEngine.UIElements;
+
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
@@ -10,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator playerAnimator;
     private Rigidbody2D rb;
     private float direction;
-    [SerializeField] private float speed = 0.1f;
+    [SerializeField] private float speed = 10f;
     private Vector2 position;
     private bool walkingLeftButton;
     private bool walkingRightButton;
@@ -32,20 +30,20 @@ public class PlayerMovement : MonoBehaviour
 
         if (walkingRightButton)
         {
-            direction = 1;
-            position = new Vector2(direction * speed, rb.velocity.y);
+            direction= 1;
+            position = Vector2.right * direction * speed;
             Move(position);
         }
         else if (walkingLeftButton)
         {
-            direction = -1;
-            position = new Vector2(direction * speed, rb.velocity.y);
+            direction= -1;
+            position = Vector2.right * direction * speed;
             Move(position);
         }
         else if (!walkingLeftButton && !walkingRightButton)
         {
             direction = Input.GetAxisRaw("Horizontal");
-            position = new Vector2(direction * speed, rb.velocity.y);
+            position = Vector2.right * direction * speed;
             Move(position);
         }
         if (direction != 0)
