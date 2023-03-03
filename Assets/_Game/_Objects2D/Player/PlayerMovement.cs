@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 position;
     private bool walkingLeftButton;
     private bool walkingRightButton;
+    private float timeBtAttack;
 
     
 
@@ -61,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
         {
             playerAnimator.SetBool("isWalking", false);
         }
-
+       
     }
     public void MoveRightButtonPressed()
     {
@@ -85,4 +86,5 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.AddForce(_position, ForceMode2D.Impulse);
     }
+    
 }
