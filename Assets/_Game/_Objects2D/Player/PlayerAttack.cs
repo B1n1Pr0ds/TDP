@@ -4,10 +4,6 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     private Animator playerAnimator;
-    private float attackAnimationTime;
-    private bool stopAttackAnimation;
-    [SerializeField]private float startAttackAnimation;
-    private bool canAttack;
     [SerializeField]private float cdBtwAttack;
     [SerializeField] private float startCdBtwAttack;
     private void Start()
@@ -17,31 +13,21 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
-        if (attackAnimationTime <= 0)
-            stopAttackAnimation = true;
-        else
-            attackAnimationTime -= Time.deltaTime;
-        if (stopAttackAnimation)
-        {
-            playerAnimator.SetBool("isAttacking", false);
-        }
-        if (cdBtwAttack <= 0)
-        {
-            if (Input.GetKeyDown(KeyCode.X))
+ 
+            if (cdBtwAttack <= 0)
             {
-                Attack();
+                if (Input.GetKeyDown(KeyCode.X))
+                {
+                    Attack();
+                }
             }
-        }
-        else
-            cdBtwAttack -= Time.deltaTime; 
-
+            else
+                cdBtwAttack -= Time.deltaTime;     
     }
     private void Attack()
     {
-        attackAnimationTime = startAttackAnimation;
-        playerAnimator.SetBool("isAttacking", true);
+        playerAnimator.SetTrigger("triggerAttacking");
         Debug.Log("Attacked");
-        stopAttackAnimation= false;
         cdBtwAttack = startCdBtwAttack;
     }
 }

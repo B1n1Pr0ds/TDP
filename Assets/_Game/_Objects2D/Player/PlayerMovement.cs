@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 position;
     private bool walkingLeftButton;
     private bool walkingRightButton;
-    private float timeBtAttack;
+  
 
     
 
