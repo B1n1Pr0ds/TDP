@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
     }
     private void Update()
     {
-        playerDistance = gameObject.transform.position.x - player.transform.position.x;
+        playerDistance = Mathf.Abs(gameObject.transform.position.x - player.transform.position.x);
         
         if (hp <=0)
         {
@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                //patrol
+                animator.SetBool("isWalking", false);
             }
         
         }
