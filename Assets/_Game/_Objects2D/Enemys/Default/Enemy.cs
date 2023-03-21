@@ -1,25 +1,28 @@
 
 using TMPro;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private PlayerScore playerScore;
     [SerializeField] private GameObject player;
-    private float playerDistance; 
+    private float playerDistance;
+    Vector3 scale;
     private int initialHp=10;
     private int hp;
     [SerializeField] private LayerMask whatIsPlayer;
     [SerializeField] private Transform attackPos;
     private Animator animator;
     private int scoreValue = 1;
+    private bool flip;
     
     
     [SerializeField]private int damage;
     [SerializeField] private float attackRange;
     [SerializeField] private float attackRangedistance = 0.8f;
     private float viewRange = 4;
-    private float speed;
+    [SerializeField]private float speed;
     private float startAtkCooldown = 1f;
     private float atkCooldown;
    
@@ -32,6 +35,7 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         playerDistance = Mathf.Abs(gameObject.transform.position.x - player.transform.position.x);
+        
         
         if (hp <=0)
         {
@@ -71,8 +75,18 @@ public class Enemy : MonoBehaviour
    
     private void ChasePlayer()
     {
-    
-        
+        scale = transform.localScale;
+        if (player.transform.position.x > transform.position.x)
+        {
+            scale.x = Mathf.Abs(scale.x) * -1 * (flip ? -1 : 1);
+            transform.Translate(speed * Time.deltaTime, 0, 0);
+        }
+        else
+        {
+            scale.x = Mathf.Abs(scale.x)*(flip ? -1 : 1);
+            transform.Translate(speed * Time.deltaTime*-1, 0, 0);
+        }
+        transform.localScale = scale;
     }
     private void Attack(int _damage)
     {
