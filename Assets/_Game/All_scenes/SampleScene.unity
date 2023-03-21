@@ -1724,6 +1724,7 @@ MonoBehaviour:
   damage: 5
   attackRange: 0.17
   attackRangedistance: 0.8
+  speed: 1
 --- !u!1 &1801770546
 GameObject:
   m_ObjectHideFlags: 0
