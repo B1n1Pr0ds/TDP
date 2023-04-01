@@ -27,3 +27,4 @@ public class GameManager : MonoBehaviour
        scoreTxt.text = "Score: " + playerScoreScript.score.ToString();
     }
 }
+    
