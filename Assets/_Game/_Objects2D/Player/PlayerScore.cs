@@ -1,13 +1,14 @@
 
 using UnityEngine;
 
+
 public class PlayerScore : MonoBehaviour
 {
     //this script is responsable to make control of the player score and life
-    private int score =0;
+    public int score =0;
     private int life;
     private int startLife=10;
-
+    [SerializeField] GameObject gameOverScene;
     public void AddScore(int _value)
     {
         score += _value;
@@ -20,6 +21,8 @@ public class PlayerScore : MonoBehaviour
     {
         life = 0;
         gameObject.SetActive(false);
+        gameOverScene.SetActive(true);
+        
     }
     private void Update()
     {

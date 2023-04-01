@@ -30,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
             else
                 cdBtwAttack -= Time.deltaTime;     
     }
-    private void Attack(int _playerDamage)
+    public void Attack(int _playerDamage)
     {
         playerAnimator.SetTrigger("triggerAttacking");
         Debug.Log("Attacked");
