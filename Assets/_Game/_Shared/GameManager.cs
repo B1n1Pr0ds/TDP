@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject player;
-    public TextMeshPro scoreTxt;
+    [SerializeField] private TextMeshProUGUI scoreTxt;
     private PlayerScore playerScoreScript;
 
   public void RestartLlevel()
