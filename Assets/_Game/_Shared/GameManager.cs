@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private TextMeshProUGUI scoreTxt;
+    [SerializeField] private TextMeshProUGUI gOScore;
     private PlayerScore playerScoreScript;
 
   public void RestartLlevel()
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     void ShowScore()
     {
        scoreTxt.text = "Score: " + playerScoreScript.score.ToString();
+        gOScore.text = "Your Final Score: " + playerScoreScript.score.ToString();
     }
 }
     

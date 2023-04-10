@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attackRangedistance = 0.8f;
     private float viewRange = 4;
     [SerializeField]private float speed;
-    private float startAtkCooldown = 1f;
+    [SerializeField]private float startAtkCooldown = 1f;
     private float atkCooldown;
    
 
@@ -48,7 +48,8 @@ public class Enemy : MonoBehaviour
             {
                 if (atkCooldown < 0)
                 {
-                    Attack(damage);
+                    animator.SetTrigger("isAttacking");
+                    atkCooldown = startAtkCooldown;
                 }
                 else
                     atkCooldown -= Time.deltaTime;
@@ -88,14 +89,15 @@ public class Enemy : MonoBehaviour
         }
         transform.localScale = scale;
     }
-    private void Attack(int _damage)
+    public void Attack()
     {
-        atkCooldown = startAtkCooldown;
-        animator.SetTrigger("isAttacking");
+        
+        
+        
         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsPlayer);
         for (int i = 0; i < enemiesToDamage.Length; i++)
         {
-            enemiesToDamage[i].GetComponent<PlayerScore>().TakeDamage(_damage);
+            enemiesToDamage[i].GetComponent<PlayerScore>().TakeDamage(damage);
         }
     }
     private void OnDrawGizmosSelected()
