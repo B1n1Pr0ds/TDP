@@ -347,10 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScene: {fileID: 1496654207}
-  timerText: {fileID: 2091278837}
-  score: 0
-  playerDeaths: 0
-  playerPlayTime: 0
+  gameManager: {fileID: 1186717478}
 --- !u!1 &352784831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,6 +1355,55 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &940416983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 940416985}
+  - component: {fileID: 940416984}
+  m_Layer: 0
+  m_Name: UI_controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &940416984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940416983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 135015a394ae62a4ea4f792d7689f3bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 1186717478}
+  scoreTxt: {fileID: 1014195543}
+  gOScore: {fileID: 482039990}
+  playTime: {fileID: 2091278837}
+  playingTime: {fileID: 2091278837}
+--- !u!4 &940416985
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940416983}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 561.2981, y: 320.67453, z: 2.635962}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &978322102
 GameObject:
   m_ObjectHideFlags: 0
@@ -2003,9 +2049,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 208573370}
-  scoreTxt: {fileID: 1014195543}
-  gOScore: {fileID: 482039990}
-  playTime: {fileID: 679833896}
+  playerScore: 0
+  playerDeaths: 0
 --- !u!4 &1186717479
 Transform:
   m_ObjectHideFlags: 0

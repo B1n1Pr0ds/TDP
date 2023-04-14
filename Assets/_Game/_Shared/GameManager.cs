@@ -6,29 +6,64 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+
+
+
+
+
+    public static GameManager instance;
+
+
     [SerializeField] private GameObject player;
-    [SerializeField] private TextMeshProUGUI scoreTxt;
-    [SerializeField] private TextMeshProUGUI gOScore;
-    [SerializeField] private TextMeshProUGUI playTime;
-    private PlayerScore playerScoreScript;
+
+   
+    private bool shouldCountTime;
+    public int playerScore;
+    public int playerDeaths;
+    private float playerPlayTime = 0;
 
   public void RestartLlevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-     void Start()
+
+    private void Awake()
     {
-        playerScoreScript = player.GetComponent<PlayerScore>();
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject);
+        
+
     }
+
     private void Update()
     {
-        ShowScore();
+        if(shouldCountTime)
+        {
+            CountTime();
+        }
+
     }
-    void ShowScore()
+    
+    public float CountTime()
     {
-       scoreTxt.text = "Score: " + playerScoreScript.score.ToString();
-       gOScore.text = "Your Score: " + playerScoreScript.score.ToString();
-       playTime.text = "Your time: " + playerScoreScript.CountTime();
+            playerPlayTime += Time.deltaTime;
+            return playerPlayTime;
+    }
+    public void EnableCountTime()
+    {
+        shouldCountTime = true;
+    }
+    public void DisableCountTime()
+    {
+        shouldCountTime = false;
     }
 }
     

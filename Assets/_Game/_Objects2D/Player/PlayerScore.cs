@@ -10,19 +10,15 @@ public class PlayerScore : MonoBehaviour
     private int life;
     private int startLife=10;
     [SerializeField] private  GameObject gameOverScene;
-    public TextMeshProUGUI timerText; 
+    [SerializeField] private GameManager gameManager;
 
 
-    [Header("PlayerScoreTracking")]
-        public int score = 0;
-        public int playerDeaths = 0;
-        public float playerPlayTime;
-    private bool shouldCountTime;
+    
 
 
     public void AddScore(int _value)
     {
-        score += _value;
+        gameManager.playerScore += _value;
     }
     public void TakeDamage(int _value)
     {
@@ -33,13 +29,15 @@ public class PlayerScore : MonoBehaviour
         life = 0;
         gameObject.SetActive(false);
         gameOverScene.SetActive(true);
-        playerDeaths += 1;
-        shouldCountTime = false;
+        gameManager.playerDeaths += 1;
+        gameManager.DisableCountTime();
         
     }
+   
+
     private void Update()
     {
-        timerText.text = CountTime();
+        
         if (Input.GetKeyDown(KeyCode.K)) 
         {
             TakeDamage(1000);
@@ -49,29 +47,14 @@ public class PlayerScore : MonoBehaviour
             Die();
         }
     }
-    private void Start()
+    private void Awake()
     {
         life = startLife;
         gameOverScene.SetActive(false);
-        shouldCountTime = true;
-
-    }
-    public void EnableCountTime()
-    {
-        shouldCountTime = true;
-    }
-    public string CountTime()
-    {
-        if (shouldCountTime)
-        {
-            playerPlayTime += Time.deltaTime;
-        }
-
-        float _minutes = Mathf.FloorToInt(playerPlayTime / 60);
-        float _seconds = Mathf.FloorToInt(playerPlayTime % 60);
-        string _currentTime = string.Format("{00:00} : {01:00}", _minutes, _seconds);
-        return _currentTime;
+        gameManager.EnableCountTime();
 
 
     }
+   
+   
 }
