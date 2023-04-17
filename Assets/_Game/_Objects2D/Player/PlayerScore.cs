@@ -52,8 +52,7 @@ public class PlayerScore : MonoBehaviour
         life = startLife;
         gameOverScene.SetActive(false);
         gameManager.EnableCountTime();
-
-
+        gameManager.SetPlayer(gameObject);
     }
    
    

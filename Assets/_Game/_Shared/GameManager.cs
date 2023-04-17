@@ -16,16 +16,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject player;
 
-   
+
     private bool shouldCountTime;
     public int playerScore;
     public int playerDeaths;
     private float playerPlayTime = 0;
 
-  public void RestartLlevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+
 
     private void Awake()
     {
@@ -37,24 +34,29 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
         DontDestroyOnLoad(gameObject);
-        
+
+
 
     }
 
     private void Update()
     {
-        if(shouldCountTime)
+        if (shouldCountTime)
         {
             CountTime();
         }
 
     }
-    
+
     public float CountTime()
     {
+        if (shouldCountTime)
+        {
             playerPlayTime += Time.deltaTime;
+            return playerPlayTime;
+        }
+        else
             return playerPlayTime;
     }
     public void EnableCountTime()
@@ -65,5 +67,10 @@ public class GameManager : MonoBehaviour
     {
         shouldCountTime = false;
     }
+    public void SetPlayer(GameObject _player)
+    {
+        player = _player;
+    }
+
 }
     
