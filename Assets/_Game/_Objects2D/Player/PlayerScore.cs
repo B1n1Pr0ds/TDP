@@ -49,6 +49,7 @@ public class PlayerScore : MonoBehaviour
     }
     private void Awake()
     {
+        gameManager = FindObjectOfType<GameManager>();
         life = startLife;
         gameOverScene.SetActive(false);
         gameManager.EnableCountTime();

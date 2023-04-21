@@ -12,9 +12,10 @@ public class UI_comtroller : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gOScore;
     [SerializeField] private TextMeshProUGUI playTime;
     [SerializeField] private TextMeshProUGUI playingTime;
-    void Start()
+    void Awake()
     {
-        
+       gameManager = FindObjectOfType<GameManager>();
+
     }
 
     // Update is called once per frame
@@ -27,7 +28,7 @@ public class UI_comtroller : MonoBehaviour
         scoreTxt.text = "Score: " + gameManager.playerScore;
         gOScore.text = "Your Score: " + gameManager.playerScore;
         playTime.text = "Your time: " + ShowTimeInTimer(gameManager.CountTime());
-        playingTime.text = ShowTimeInTimer(gameManager.CountTime());
+        playingTime.text = ShowTimeInTimer(gameManager.playerPlayTime);
     }
     private string ShowTimeInTimer(float playerPlayTime)
     {
@@ -36,4 +37,9 @@ public class UI_comtroller : MonoBehaviour
         string _currentTime = string.Format("{00:00} : {01:00}", _minutes, _seconds);
         return _currentTime;
     }
+    public void setGameManager(GameManager _gameManager)
+    {
+        gameManager= _gameManager;
+    }
+
 }

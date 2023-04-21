@@ -1,8 +1,6 @@
 
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using TMPro;
-using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -15,15 +13,15 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField] private GameObject player;
-
+    [SerializeField] private UI_comtroller ui_controller;
 
     private bool shouldCountTime;
     public int playerScore;
     public int playerDeaths;
-    private float playerPlayTime = 0;
+    public float playerPlayTime;
 
 
-
+    
     private void Awake()
     {
         if (instance == null)
@@ -34,9 +32,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+
         DontDestroyOnLoad(gameObject);
-
-
 
     }
 
@@ -44,7 +42,7 @@ public class GameManager : MonoBehaviour
     {
         if (shouldCountTime)
         {
-            CountTime();
+            playerPlayTime = playerPlayTime += Time.deltaTime;
         }
 
     }
@@ -53,7 +51,7 @@ public class GameManager : MonoBehaviour
     {
         if (shouldCountTime)
         {
-            playerPlayTime += Time.deltaTime;
+            
             return playerPlayTime;
         }
         else
@@ -70,6 +68,11 @@ public class GameManager : MonoBehaviour
     public void SetPlayer(GameObject _player)
     {
         player = _player;
+    }
+    
+    public void setui_controller(UI_comtroller _ui_controller)
+    {
+        ui_controller = _ui_controller;
     }
 
 }
