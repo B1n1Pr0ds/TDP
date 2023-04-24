@@ -14,11 +14,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject player;
     [SerializeField] private UI_comtroller ui_controller;
-
+    private PlayerScore playerScoreScript;
     private bool shouldCountTime;
     public int playerScore;
     public int playerDeaths;
     public float playerPlayTime;
+    public int playerLife;
+    public int playerMaxLife;
 
 
     
@@ -44,6 +46,8 @@ public class GameManager : MonoBehaviour
         {
             playerPlayTime = playerPlayTime += Time.deltaTime;
         }
+        playerLife = playerScoreScript.getLife();
+        playerMaxLife= playerScoreScript.getMaxLife();
 
     }
 
@@ -73,6 +77,10 @@ public class GameManager : MonoBehaviour
     public void setui_controller(UI_comtroller _ui_controller)
     {
         ui_controller = _ui_controller;
+    }
+    public void setPlayerScoreScript(PlayerScore _script)
+    {
+        playerScoreScript = _script;
     }
 
 }

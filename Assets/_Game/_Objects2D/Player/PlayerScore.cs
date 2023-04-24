@@ -7,8 +7,8 @@ public class PlayerScore : MonoBehaviour
 {
     //this script is responsable to make control of the player score and life
     
-    private int life;
-    private int startLife=10;
+    public int life;
+    public int startLife=10;
     [SerializeField] private  GameObject gameOverScene;
     [SerializeField] private GameManager gameManager;
 
@@ -54,7 +54,15 @@ public class PlayerScore : MonoBehaviour
         gameOverScene.SetActive(false);
         gameManager.EnableCountTime();
         gameManager.SetPlayer(gameObject);
+        gameManager.setPlayerScoreScript(this);
     }
-   
+    public int getLife()
+    {
+        return life;
+    }
+   public int getMaxLife()
+    {
+        return startLife;
+    }
    
 }

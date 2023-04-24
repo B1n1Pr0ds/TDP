@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
     {
         hp = initialHp;
         animator = gameObject.GetComponent<Animator>();
+        
     }
     private void Update()
     {

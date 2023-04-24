@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UI_comtroller : MonoBehaviour
@@ -12,6 +13,7 @@ public class UI_comtroller : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gOScore;
     [SerializeField] private TextMeshProUGUI playTime;
     [SerializeField] private TextMeshProUGUI playingTime;
+    [SerializeField] private TextMeshProUGUI playerLife;
     void Awake()
     {
        gameManager = FindObjectOfType<GameManager>();
@@ -29,6 +31,11 @@ public class UI_comtroller : MonoBehaviour
         gOScore.text = "Your Score: " + gameManager.playerScore;
         playTime.text = "Your time: " + ShowTimeInTimer(gameManager.CountTime());
         playingTime.text = ShowTimeInTimer(gameManager.playerPlayTime);
+        playerLife.text = gameManager.playerLife + "/" + gameManager.playerMaxLife;
+        if (gameManager.playerLife <= gameManager.playerMaxLife / 2)
+            playerLife.color = Color.red;
+        else
+            playerLife.color = Color.white;
     }
     private string ShowTimeInTimer(float playerPlayTime)
     {
