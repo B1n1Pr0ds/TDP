@@ -24,6 +24,15 @@ public class PlayerScore : MonoBehaviour
     {
         life -= _value;
     }
+    public void Heal(int _value)
+    {
+        if (life + _value >= startLife)
+            life = startLife;
+        else if (life + _value < startLife)
+            life += _value;
+        
+
+    }
     public void Die()
     {
         life = 0;

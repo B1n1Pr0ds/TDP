@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int _damage)
     {
         hp -= _damage;
-        Debug.Log("Damage taken!");
+        Debug.Log("Damage taken!" +_damage);
     }
     private void Die()
     {
@@ -78,16 +78,25 @@ public class Enemy : MonoBehaviour
     private void ChasePlayer()
     {
         scale = transform.localScale;
-        if (player.transform.position.x > transform.position.x)
+        if (flip)
         {
-            scale.x = Mathf.Abs(scale.x) * -1 * (flip ? -1 : 1);
-            transform.Translate(speed * Time.deltaTime, 0, 0);
+            if (player.transform.position.x > transform.position.x)
+            {
+                scale.x = Mathf.Abs(scale.x) * 1 * (flip ? -1 : 1);
+                transform.Translate(speed * Time.deltaTime, 0, 0);
+            }
+            else
+            {
+                scale.x = Mathf.Abs(scale.x) * -1 * (flip ? -1 : 1);
+                transform.Translate(speed * Time.deltaTime * -1, 0, 0);
+            }
+        }
+        if (player.transform.position.y > transform.position.y)
+        {
+            flip = false;
         }
         else
-        {
-            scale.x = Mathf.Abs(scale.x)*(flip ? -1 : 1);
-            transform.Translate(speed * Time.deltaTime*-1, 0, 0);
-        }
+            flip = true;
         transform.localScale = scale;
     }
     public void Attack()

@@ -296,10 +296,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 100
+  jumpInEnemyForce: 35
   playerFeet: {fileID: 379479542}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 128
   animator: {fileID: 208573376}
 --- !u!114 &208573378
 MonoBehaviour:
@@ -2882,11 +2886,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582659044}
   m_CullTransparentMesh: 1
---- !u!4 &1637143288 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5417470578830345919, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
-  m_PrefabInstance: {fileID: 1664240175}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1639802548
 GameObject:
   m_ObjectHideFlags: 0
@@ -2917,75 +2916,9 @@ Transform:
   m_Children:
   - {fileID: 909467327}
   - {fileID: 1778769472}
-  - {fileID: 1637143288}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1664240175
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1639802549}
-    m_Modifications:
-    - target: {fileID: 5417470578830345914, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 208573370}
-    - target: {fileID: 5417470578830345914, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
-      propertyPath: playerScore
-      value: 
-      objectReference: {fileID: 208573380}
-    - target: {fileID: 5417470578830345919, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5417470578830345919, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 9.899804
-      objectReference: {fileID: 0}
-    - target: {fileID: 5417470578830345919, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.52353513
-      objectReference: {fileID: 0}
-    - target: {fileID: 5417470578830345919, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.08020832
-      objectReference: {fileID: 0}
-    - target: {fileID: 5417470578830345919, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5417470578830345919, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5417470578830345919, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5417470578830345919, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5417470578830345919, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5417470578830345919, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5417470578830345919, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5417470578830345920, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
-      propertyPath: m_Name
-      value: Enemy
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
 --- !u!1 &1671077761
 GameObject:
   m_ObjectHideFlags: 0
@@ -3557,6 +3490,14 @@ PrefabInstance:
       propertyPath: playerScore
       value: 
       objectReference: {fileID: 208573380}
+    - target: {fileID: 5417470578830345917, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
+      propertyPath: m_Size.y
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 5417470578830345917, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.14
+      objectReference: {fileID: 0}
     - target: {fileID: 5417470578830345919, guid: fb71fcae7e8d7e6498cc55b995c96844, type: 3}
       propertyPath: m_RootOrder
       value: 1
