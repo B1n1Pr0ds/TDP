@@ -8,4 +8,8 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

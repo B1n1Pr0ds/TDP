@@ -14,6 +14,9 @@ public class UI_comtroller : MonoBehaviour
     [SerializeField] private TextMeshProUGUI playTime;
     [SerializeField] private TextMeshProUGUI playingTime;
     [SerializeField] private TextMeshProUGUI playerLife;
+    [SerializeField] private TextMeshProUGUI finishlevelScore;
+    [SerializeField] private TextMeshProUGUI finishlevelDeaths;
+    [SerializeField] private TextMeshProUGUI finishlevelTime;
     void Awake()
     {
        gameManager = FindObjectOfType<GameManager>();
@@ -36,6 +39,9 @@ public class UI_comtroller : MonoBehaviour
             playerLife.color = Color.red;
         else
             playerLife.color = Color.white;
+        finishlevelDeaths.text = "Number of deaths: " + gameManager.playerDeaths;
+        finishlevelTime.text = "Your time: " + ShowTimeInTimer(gameManager.CountTime());
+        finishlevelScore.text ="Your score: " + gameManager.playerScore;
     }
     private string ShowTimeInTimer(float playerPlayTime)
     {

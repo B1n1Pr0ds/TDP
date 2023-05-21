@@ -11,6 +11,7 @@ public class PlayerScore : MonoBehaviour
     public int startLife=10;
     [SerializeField] private  GameObject gameOverScene;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private GameObject finishLevelScreen;
 
 
     
@@ -42,7 +43,15 @@ public class PlayerScore : MonoBehaviour
         gameManager.DisableCountTime();
         
     }
-   
+
+    public void FinishLevel()
+    {
+        gameObject.SetActive(false);
+        finishLevelScreen.SetActive(true);
+        gameManager.DisableCountTime();
+
+    }
+
 
     private void Update()
     {
@@ -64,6 +73,7 @@ public class PlayerScore : MonoBehaviour
         gameManager.EnableCountTime();
         gameManager.SetPlayer(gameObject);
         gameManager.setPlayerScoreScript(this);
+        finishLevelScreen.SetActive(false);
     }
     public int getLife()
     {
